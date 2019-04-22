@@ -37,6 +37,10 @@ errcheck:
 vendor-status:
 	@govendor status
 
+cronjob:
+	@govendor fetch $$(govendor list | grep alibaba-cloud-sdk-go/services)
+	@make testacc
+
 test-compile:
 	@if [ "$(TEST)" = "./..." ]; then \
 		echo "ERROR: Set TEST to a specific package. For example,"; \
