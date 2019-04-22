@@ -38,7 +38,7 @@ vendor-status:
 	@govendor status
 
 cronjob:
-	@govendor fetch $$(govendor list | grep alibaba-cloud-sdk-go/services)
+	@govendor fetch $$(govendor list | grep alibaba-cloud-sdk-go/sdk)
 	@make testacc
 
 test-compile:
