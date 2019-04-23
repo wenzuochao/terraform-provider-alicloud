@@ -39,7 +39,6 @@ vendor-status:
 
 cronjob:
 	@govendor fetch $$(govendor list | grep alibaba-cloud-sdk-go/sdk)
-	@make testacc
 	TF_ACC=1 go test ./$(PKG_NAME) -v  -timeout 120m
 
 test-compile:

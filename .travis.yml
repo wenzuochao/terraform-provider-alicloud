@@ -15,7 +15,11 @@ install:
 - go get github.com/kardianos/govendor
 
 script:
+- cd ../../
+- git clone --depth=50 https://github.com/wenzuochao/terraform-provider-alicloud.git terraform-providers/terraform-provider-alicloud
+- cd terraform-providers/terraform-provider-alicloud
 - make test
+- echo "TRAVIS_EVENT_TYPE is $TRAVIS_EVENT_TYPE"
 - make vendor-status
 - make vet
 - make website-test
