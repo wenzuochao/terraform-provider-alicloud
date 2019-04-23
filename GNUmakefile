@@ -37,6 +37,11 @@ errcheck:
 vendor-status:
 	@govendor status
 
+cronjob:
+	@govendor fetch $$(govendor list | grep alibaba-cloud-sdk-go/sdk)
+	@make testacc
+	TF_ACC=1 go test ./$(PKG_NAME) -v  -timeout 120m
+
 test-compile:
 	@if [ "$(TEST)" = "./..." ]; then \
 		echo "ERROR: Set TEST to a specific package. For example,"; \
